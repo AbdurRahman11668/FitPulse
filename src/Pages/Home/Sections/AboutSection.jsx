@@ -1,14 +1,14 @@
 const AboutSection = () => {
   return (
-    <div className="px-10 md:px-0">
-      <h2 className="text-[#920638] text-center font-bold text-4xl mb-10">
-        About
+    <div className="px-10 md:px-10 pb-5">
+      <h2 className="text-[#920638] pb-5 text-center font-bold text-4xl mb-10">
+        ABOUT
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         <div>
             <img className="rounded" src="https://i.ibb.co/DCqPQ8h/about.jpg" alt="" />
         </div>
-        <div className="lg:mt-10">
+        <div className="">
             <h3 className="mb-5 font-bold text-gray-800 text-2xl">Welcome to <span className="text-[#920638] font-bold text-3xl">FitPulse</span></h3>
           <p className="mb-2">
             Welcome to FitPulse, your ultimate destination for all things

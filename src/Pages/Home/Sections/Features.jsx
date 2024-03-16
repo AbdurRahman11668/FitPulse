@@ -2,13 +2,14 @@ import { Helmet } from "react-helmet-async";
 
 const Features = () => {
   return (
-    <div className="pb-10">
+    <div className="py-10">
       <Helmet>
         <title>Fitpulse | Features</title>
       </Helmet>
       <div className="px-10">
-        <h2>Features</h2>
-
+        <h2 className="text-[#920638] pb-5 text-center font-bold text-4xl mb-10">
+        FEATURES
+      </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 mb-5 gap-5 md:gap-0">
           {/* 1 */}
           <div className="text-center border md:border-0 lg:border-b lg:border-r border-[#920638] p-5 hover:border-2 md:hover:border-0 lg:hover:border-b-2 lg:hover:border-r-2">
