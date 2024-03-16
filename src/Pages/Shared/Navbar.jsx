@@ -1,10 +1,10 @@
-import { useContext, useRef, useState } from "react";
-import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
-import useAdmin from "../../Hooks/useAdmin";
-import useGuide from "../../Hooks/UseGuide";
-import useWishlist from "../../Hooks/useWishlist";
+// import { useContext, useRef, useState } from "react";
+// import { FaShoppingCart } from "react-icons/fa";
+// import { Link } from "react-router-dom";
+// import { AuthContext } from "../../Provider/AuthProvider";
+// import useAdmin from "../../Hooks/useAdmin";
+// import useGuide from "../../Hooks/UseGuide";
+// import useWishlist from "../../Hooks/useWishlist";
 
 const Navbar = () => {
 //   const { user, logOut } = useContext(AuthContext);

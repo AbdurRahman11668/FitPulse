@@ -8,6 +8,7 @@ const router = createBrowserRouter([
     path: "/",
     errorElement: <ErrorPage></ErrorPage>,
     element: <Main></Main>,
+    loader: () => fetch("http://localhost:5000"),
     children: [
       {
         path: "/",

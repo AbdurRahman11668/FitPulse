@@ -6,7 +6,6 @@ import Footer from './Shared/Footer';
 const ErrorPage = () => {
     return (
         <div>
-      <Navbar></Navbar>
       <div className="text-center w-full mb-10">
         <img
           className="w-[700px] pt-10 mx-auto "
@@ -17,7 +16,6 @@ const ErrorPage = () => {
           Go Back to Home
         </Link>
       </div>
-      <Footer></Footer>
     </div>
     );
 };
