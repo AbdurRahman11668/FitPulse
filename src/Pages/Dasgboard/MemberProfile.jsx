@@ -1,5 +1,5 @@
 
-const Member = () => {
+const MemberProfile = () => {
     return (
         <div>
             
@@ -7,4 +7,4 @@ const Member = () => {
     );
 };
 
-export default Member;
+export default MemberProfile;

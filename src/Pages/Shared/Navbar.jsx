@@ -53,40 +53,63 @@ const Navbar = () => {
       <li>
         <Link
           className="hover:text-[#920638] hover:bg-white hover:font-semibold"
+          to="/gallery"
+        >
+          Gallery
+        </Link>
+      </li>
+      <li className="">
+        <Link
+          className="hover:text-[#920638] hover:bg-white hover:font-semibold"
+          to="/trainer"
+        >
+          Trainer
+        </Link>
+      </li>
+      <li className="">
+        <Link
+          className="hover:text-[#920638] hover:bg-white hover:font-semibold"
+          to="/classes"
+        >
+          Classes
+        </Link>
+      </li>
+      <ul className="">
+        {/* <Link
+          className="hover:text-[#920638] hover:bg-white hover:font-semibold"
+          to="/dashboard"
+        >
+          Dashboard
+        </Link> */}
+        {user && isAdmin && !isTrainer && (
+          <li className="hover:text-[#920638] hover:bg-white hover:font-semibold rounded--lg">
+            <Link to="/dashboard/adminHome" className="hover:bg-white rounded-lg">Dashboard</Link>
+          </li>
+        )}
+        {user && !isAdmin && !isTrainer && (
+          <li className="hover:text-[#920638] hover:bg-white hover:font-semibold rounded-lg">
+            <Link to="/dashboard/profile" className="hover:bg-white rounded-lg">Dashboard</Link>
+          </li>
+        )}
+        {user && !isAdmin && isTrainer && (
+          <li className="hover:text-[#920638] hover:bg-white hover:font-semibold rounded--lg">
+            <Link to="/dashboard/trainerHome" className="hover:bg-white rounded-lg">Dashboard</Link>
+          </li>
+        )}
+      </ul>
+      <li className="">
+        <Link
+          className="hover:text-[#920638] hover:bg-white hover:font-semibold"
           to="/community"
         >
           Community
-        </Link>
-      </li>
-      <li className="">
-        <Link
-          className="hover:text-[#920638] hover:bg-white hover:font-semibold"
-          to="/blog"
-        >
-          Blog
-        </Link>
-      </li>
-      <li className="">
-        <Link
-          className="hover:text-[#920638] hover:bg-white hover:font-semibold"
-          to="/about"
-        >
-          About us
-        </Link>
-      </li>
-      <li className="">
-        <Link
-          className="hover:text-[#920638] hover:bg-white hover:font-semibold"
-          to="/contact"
-        >
-          Contact us
         </Link>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-gray-400 text-[#920638] font-semibold">
+    <div className="navbar bg-gray-200 text-[#920638] font-semibold">
       <div className="navbar-start sm:justify-around lg:justify-normal">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -111,72 +134,71 @@ const Navbar = () => {
           >
             {navOptions}
             <div className="navbar-end justify-center lg:justify-end lg:*:hidden">
-            {user ? (
-              <>
-                <div className="">
-                  <img
-                    className="w-12 rounded-full lg:mr-20 cursor-pointer"
-                    ref={profilePicRef}
-                    src={user.providerData[0].photoURL}
-                    alt="Profile Pic"
-                    onClick={handleProfilePicClick}
-                  />
+              {user ? (
+                <>
+                  <div className="">
+                    <img
+                      className="w-12 rounded-full lg:mr-20 cursor-pointer"
+                      ref={profilePicRef}
+                      src={user.providerData[0].photoURL}
+                      alt="Profile Pic"
+                      onClick={handleProfilePicClick}
+                    />
 
-                  {isDropdownVisible && (
-                    <div style={dropdownStyle}>
-                      {/* Your dropdown content goes here */}
-                      <ul className="text-black bg-white mt-2 rounded p-5 border border-[#50ba87] lg:-ml-52">
-                        <div className="text-center pb-2">
-                          <li className="text-[12px] font-semibold text-[#50ba87]  mb-2">
-                            {user.providerData[0].displayName}
+                    {isDropdownVisible && (
+                      <div style={dropdownStyle}>
+                        {/* Your dropdown content goes here */}
+                        <ul className="text-black bg-white mt-2 rounded p-5 border border-[#50ba87] lg:-ml-52">
+                          <div className="text-center pb-2">
+                            <li className="text-[12px] font-semibold text-[#50ba87]  mb-2">
+                              {user.providerData[0].displayName}
+                            </li>
+                            <li className="text-[12px] font-semibold text-[#50ba87]  mb-2">
+                              {user.providerData[0].email}
+                            </li>
+                          </div>
+                          {user && isAdmin && !isTrainer && (
+                            <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
+                              <Link to="/dashboard/admin">Dashboard</Link>
+                            </li>
+                          )}
+                          {user && !isAdmin && !isTrainer && (
+                            <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
+                              <Link to="/dashboard/profile">Dashboard</Link>
+                            </li>
+                          )}
+                          {user && !isAdmin && isTrainer && (
+                            <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
+                              <Link to="/dashboard/trainer">Dashboard</Link>
+                            </li>
+                          )}
+                          <Link to="/offer">
+                            <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
+                              Offer Announcements
+                            </li>
+                          </Link>
+                          <li>
+                            <button
+                              onClick={handleLogOut}
+                              className=" text-sm mt-2 font-semibold text-cyan-950 hover:text-[#50ba87] hover:font-medium"
+                            >
+                              Sign Out
+                            </button>
                           </li>
-                          <li className="text-[12px] font-semibold text-[#50ba87]  mb-2">
-                            {user.providerData[0].email}
-                          </li>
-                        </div>
-                        {user && isAdmin && !isTrainer && (
-                          <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
-                            <Link to="/dashboard/admin">Dashboard</Link>
-                          </li>
-                        )}
-                        {user && !isAdmin && !isTrainer && (
-                          <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
-                            <Link to="/dashboard/profile">Dashboard</Link>
-                          </li>
-                        )}
-                        {user && !isAdmin && isTrainer && (
-                          <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
-                            <Link to="/dashboard/trainer">Dashboard</Link>
-                          </li>
-                        )}
-                        <Link to="/offer">
-                          <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
-                            Offer Announcements
-                          </li>
-                        </Link>
-                        <li>
-                          <button
-                            onClick={handleLogOut}
-                            className=" text-sm mt-2 font-semibold text-cyan-950 hover:text-[#50ba87] hover:font-medium"
-                          >
-                            Sign Out
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </>
-            ) : (
-              <Link to="/login">
-                <button className="btn btn-ghost hover:bg-white hover:text-[#920638] font-semibold">
-                  Login
-                </button>
-              </Link>
-            )}
-          </div>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <Link to="/login">
+                  <button className="btn btn-ghost hover:bg-white hover:text-[#920638] font-semibold">
+                    Login
+                  </button>
+                </Link>
+              )}
+            </div>
           </ul>
-          
         </div>
         <Link
           to="/"
@@ -187,7 +209,9 @@ const Navbar = () => {
             src="https://i.ibb.co/LgbbCFb/logo.png"
             alt=""
           />
-          <a className=" normal-case text-xl font-bold hidden md:inline">Tourist Club</a>
+          <a className=" normal-case text-xl font-bold hidden md:inline">
+            FitPulse
+          </a>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -197,58 +221,21 @@ const Navbar = () => {
       <div className="navbar-end justify-center lg:justify-end hidden lg:flex">
         {user ? (
           <>
-            <div className="">
+            <div className="flex pr-10">
               <img
-                className="w-12 rounded-full lg:mr-20 cursor-pointer"
+                className="w-12 mr-5 rounded-full cursor-pointer"
                 ref={profilePicRef}
                 src={user.providerData[0].photoURL}
                 alt="Profile Pic"
                 onClick={handleProfilePicClick}
               />
 
-              {isDropdownVisible && (
-                <div style={dropdownStyle}>
-                  {/* Your dropdown content goes here */}
-                  <ul className="text-black bg-white mt-2 rounded p-5 border border-[#50ba87] lg:-ml-52">
-                    <div className="text-center pb-2">
-                      <li className="text-[12px] font-semibold text-[#50ba87]  mb-2">
-                        {user.providerData[0].displayName}
-                      </li>
-                      <li className="text-[12px] font-semibold text-[#50ba87]  mb-2">
-                        {user.providerData[0].email}
-                      </li>
-                    </div>
-                    {user && isAdmin && !isTrainer && (
-                      <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
-                        <Link to="/dashboard/admin">Dashboard</Link>
-                      </li>
-                    )}
-                    {user && !isAdmin && !isTrainer && (
-                      <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
-                        <Link to="/dashboard/profile">Dashboard</Link>
-                      </li>
-                    )}
-                    {user && !isAdmin && isTrainer && (
-                      <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
-                        <Link to="/dashboard/trainer">Dashboard</Link>
-                      </li>
-                    )}
-                    <Link to="/offer">
-                      <li className="text-sm font-semibold text-cyan-950 hover:text-[#50ba87] ">
-                        Offer Announcements
-                      </li>
-                    </Link>
-                    <li>
-                      <button
-                        onClick={handleLogOut}
-                        className=" text-sm mt-2 font-semibold text-cyan-950 hover:text-[#50ba87] hover:font-medium"
-                      >
-                        Sign Out
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              )}
+              <button
+                onClick={handleLogOut}
+                className=" text-sm mt-2 font-semibold text-cyan-950 hover:text-[#920638] hover:font-semibold"
+              >
+                Sign Out
+              </button>
             </div>
           </>
         ) : (
