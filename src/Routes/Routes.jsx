@@ -12,6 +12,10 @@ import Admin from "../Pages/Dasgboard/Admin";
 import AllUsers from "../Pages/Dasgboard/AllUsers";
 import AdminRoute from "./AdminRoute";
 import Gallery from "../Pages/Gallery";
+import TrainersPage from "../Pages/TrainersPage";
+import TrainerDetails from "../Pages/TrainerDetails";
+import BeaTrainer from "../Pages/BeaTrainer";
+import TrainerHandle from "../Pages/Dasgboard/TrainerHandle";
 
 const router = createBrowserRouter([
   {
@@ -26,9 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/classdetails/:id",
-        element: (
-            <ClassDetails></ClassDetails>
-        ),
+        element: <ClassDetails></ClassDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/classes/${params.id}`),
       },
@@ -43,6 +45,24 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
+      },
+      {
+        path: "/trainers/beatrainer",
+        element: <BeaTrainer></BeaTrainer>
+      },
+      {
+        path: "/trainers",
+        element: <TrainersPage></TrainersPage>
+      },
+      {
+        path: "/trainerdetails/:id",
+        element: (
+          <PrivateRoute>
+            <TrainerDetails></TrainerDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/users/${params.id}`),
       },
     ],
   },
@@ -77,8 +97,16 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-    ]
-  }
+      {
+        path: "alltrainers",
+        element: (
+          <AdminRoute>
+            <TrainerHandle></TrainerHandle>
+          </AdminRoute>
+        ),
+      },
+    ],
+  },
 ]);
 
 export default router;

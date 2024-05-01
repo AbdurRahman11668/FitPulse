@@ -61,9 +61,9 @@ const Navbar = () => {
       <li className="">
         <Link
           className="hover:text-[#920638] hover:bg-white hover:font-semibold"
-          to="/trainer"
+          to="/trainers"
         >
-          Trainer
+          Trainers
         </Link>
       </li>
       <li className="">
